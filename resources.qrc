@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/capture.png</file>
+    <file>icons/captures.png</file>
+    <file>icons/fiberScope_.png</file>
+    <file>icons/preview_n.png</file>
+    <file>icons/results.png</file>
+    <file>icons/video.png</file>
+    <file>icons/cil-x.png</file>
+    <file>icons/icon_maximize.png</file>
+    <file>icons/icon_minimize.png</file>
+    <file>icons/logo.png</file>
+  </qresource>
+</RCC>
