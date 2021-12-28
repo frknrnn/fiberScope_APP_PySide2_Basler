@@ -10,8 +10,14 @@ from ui_main import Ui_MainWindow
 import numpy as np
 from baslerCamera import basler_cam
 from widgets import CircularProgress,PySlider,PyLabel,PyToggle,DocumentsWidget
+from infoFunctions import infoPage
+from datetime import datetime
+import threading
+import os
+from skimage import io
 import cv2
 import serial
+import time
 import sys
 
 class AppFunctions(QMainWindow):
@@ -37,6 +43,8 @@ class AppFunctions(QMainWindow):
 
         self.ui.pushButton_quickExposure.clicked.connect(self.quickSetExposure)
         self.ui.pushButton_quickGain.clicked.connect(self.quickSetGain)
+
+        self.ui.pushButton_cap.clicked.connect(self.quickTakeCap)
 
         self.createCustomWidgets()
         self.startCam(1280, 960, 0)
@@ -203,6 +211,87 @@ class AppFunctions(QMainWindow):
     def blueLed(self, value):
         self.blueProgress.set_value(value)
 
+
+
+    def quickTakeCap(self):
+
+        if(self.ui.checkBox_capture_8bit.isChecked() !=True and self.ui.checkBox_capture_16Bit.isChecked() !=True):
+            self.infoPage = infoPage()
+            self.infoPage.loading_ui.label_info.setText("Please select the pixel format.")
+            return
+        self.cam.real_mode_deactive()
+
+        folderPath = QFileDialog.getExistingDirectory(self, 'Select folder')
+        if(folderPath==""):
+            print("cancel Folder")
+            return
+
+        date_object = datetime.now()
+        date_object = date_object.strftime("%Y_%m_%d_%H_%M")
+        directory = folderPath +"/"+ str(date_object)+"_Cap"
+
+
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        self.quickDirectory = directory
+
+        self.infoPage = infoPage()
+        self.infoPage.loading_ui.label_info.setText("Captured.")
+        self.infoPage.loading_ui.pushButton_close.hide()
+        x = threading.Thread(target=self.takeCapImages)
+        x.start()
+
+    def takeCapImages(self):
+
+        directory = self.quickDirectory
+        cap_image = self.cam.takeCap()
+        if (self.ui.checkBox_capture_16Bit.isChecked()):
+            dirr_w16 = directory + "/cap_16.tif"
+            io.imsave(dirr_w16, cap_image)
+        if (self.ui.checkBox_capture_8bit.isChecked()):
+            w_image_8 = self.bytescaling(cap_image)
+            dirr_w8 = directory + "/cap_8.tif"
+            io.imsave(dirr_w8, w_image_8)
+        self.cam.real_mode_active()
+        self.infoPage.loading_ui.pushButton_close.show()
+
+    def bytescaling(self,data, cmin=None, cmax=None, high=255, low=0):
+        """
+        Converting the input image to uint8 dtype and scaling
+        the range to ``(low, high)`` (default 0-255). If the input image already has
+        dtype uint8, no scaling is done.
+        :param data: 16-bit image data array
+        :param cmin: bias scaling of small values (def: data.min())
+        :param cmax: bias scaling of large values (def: data.max())
+        :param high: scale max value to high. (def: 255)
+        :param low: scale min value to low. (def: 0)
+        :return: 8-bit image data array
+        """
+        if data.dtype == np.uint8:
+            return data
+
+        if high > 255:
+            high = 255
+        if low < 0:
+            low = 0
+        if high < low:
+            raise ValueError("`high` should be greater than or equal to `low`.")
+
+        if cmin is None:
+            cmin = data.min()
+        if cmax is None:
+            cmax = data.max()
+
+        cscale = cmax - cmin
+        if cscale == 0:
+            cscale = 1
+
+        scale = float(high - low) / cscale
+        bytedata = (data - cmin) * scale + low
+        return (bytedata.clip(low, high) + 0.5).astype(np.uint8)
+
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
 
@@ -220,6 +309,10 @@ class AppFunctions(QMainWindow):
             self.windowStatus=0
             self.showNormal()
             self.resize(self.width()+1,self.height()+1)
+
+
+
+
 
     def APP_EXİT(self):
         sys.exit(self.app.exec_())
