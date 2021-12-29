@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainNLugBa.ui'
+## Form generated from reading UI file 'maingCHcae.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.frame_main.setFrameShape(QFrame.NoFrame)
         self.frame_main.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame_main)
-        self.verticalLayout.setSpacing(3)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.frame_tabBar = QFrame(self.frame_main)
@@ -198,7 +198,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.line)
 
-        self.frame_scaffold = QFrame(self.frame_main)
+        self.stackedWidget_mainPage = QStackedWidget(self.frame_main)
+        self.stackedWidget_mainPage.setObjectName(u"stackedWidget_mainPage")
+        self.page_10 = QWidget()
+        self.page_10.setObjectName(u"page_10")
+        self.verticalLayout_12 = QVBoxLayout(self.page_10)
+        self.verticalLayout_12.setSpacing(0)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.frame_scaffold = QFrame(self.page_10)
         self.frame_scaffold.setObjectName(u"frame_scaffold")
         self.frame_scaffold.setFrameShape(QFrame.NoFrame)
         self.frame_scaffold.setFrameShadow(QFrame.Raised)
@@ -219,7 +227,9 @@ class Ui_MainWindow(object):
         self.frame_camera.setFrameShape(QFrame.NoFrame)
         self.frame_camera.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.frame_camera)
+        self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget_camera = QStackedWidget(self.frame_camera)
         self.stackedWidget_camera.setObjectName(u"stackedWidget_camera")
         self.page_3 = QWidget()
@@ -521,6 +531,297 @@ class Ui_MainWindow(object):
         self.stackedWidget_camera.addWidget(self.page_3)
         self.page_4 = QWidget()
         self.page_4.setObjectName(u"page_4")
+        self.verticalLayout_14 = QVBoxLayout(self.page_4)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.pictureBox_result = QtImageViewer_preview()
+        self.pictureBox_result.setObjectName(u"pictureBox_result")
+        sizePolicy.setHeightForWidth(self.pictureBox_result.sizePolicy().hasHeightForWidth())
+        self.pictureBox_result.setSizePolicy(sizePolicy)
+        self.pictureBox_result.setMinimumSize(QSize(535, 0))
+        self.pictureBox_result.setMaximumSize(QSize(16777215, 16777215))
+        self.pictureBox_result.setMouseTracking(False)
+        self.pictureBox_result.setStyleSheet(u"QGraphicsView{\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"border:none;\n"
+"}\n"
+"\n"
+" QScrollBar:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     height: 15px;\n"
+"\n"
+"     margin: 3px 15px 3px 15px;\n"
+"\n"
+"     border: 1px transparent #2A2929;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+"     background-color:rgb(49, 51, 50) ;  \n"
+"\n"
+"	\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::handle:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     background-color: white;      /* #605F5F; */\n"
+"\n"
+"     min-width: 5px;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 0px 3px 0px 3px;\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     subcontrol-position: right;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 0px 3px 0px 3px;\n"
+"\n"
+"     border-imag"
+                        "e: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: left;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
+"\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: right;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
+"\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: left;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" QScrol"
+                        "lBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     \n"
+"\n"
+"	background-color: rgb(49, 51, 50);\n"
+"\n"
+"     width: 15px;\n"
+"\n"
+"     margin: 15px 3px 15px 3px;\n"
+"\n"
+"     border: 1px transparent #2A2929;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::handle:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     background-color: white;         /* #605F5F; */\n"
+"\n"
+"     min-height: 5px;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 3px 0px 3px 0px;\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: top;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 3px 0px 3px 0px;\n"
+"\n"
+"     bor"
+                        "der-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: bottom;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
+"\n"
+" {\n"
+"\n"
+"\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: top;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on\n"
+"\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: bottom;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" Q"
+                        "ScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }")
+        self.pictureBox_result.setFrameShape(QFrame.NoFrame)
+        self.pictureBox_result.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_14.addWidget(self.pictureBox_result)
+
         self.stackedWidget_camera.addWidget(self.page_4)
 
         self.verticalLayout_7.addWidget(self.stackedWidget_camera)
@@ -1167,6 +1468,180 @@ class Ui_MainWindow(object):
         self.line_6.setLineWidth(2)
         self.line_6.setFrameShape(QFrame.HLine)
         self.line_6.setFrameShadow(QFrame.Sunken)
+        self.pushButton_experimentStart = QPushButton(self.frame_10)
+        self.pushButton_experimentStart.setObjectName(u"pushButton_experimentStart")
+        self.pushButton_experimentStart.setGeometry(QRect(60, 410, 100, 30))
+        self.pushButton_experimentStart.setMinimumSize(QSize(100, 30))
+        self.pushButton_experimentStart.setMaximumSize(QSize(100, 30))
+        self.pushButton_experimentStart.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_experimentStart.setStyleSheet(u"QPushButton{\n"
+"background-image: url(:/icons/icons/start.png);\n"
+"background-color: rgba(150, 150, 150,100);\n"
+"border-radius:12px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}\n"
+"QPushButton::hover{\n"
+"background-color: rgb(0, 130, 0);\n"
+"border-radius:12px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}")
+        self.label_12 = QLabel(self.frame_10)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setGeometry(QRect(10, 270, 111, 20))
+        self.label_12.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.line_9 = QFrame(self.frame_10)
+        self.line_9.setObjectName(u"line_9")
+        self.line_9.setGeometry(QRect(10, 290, 150, 1))
+        self.line_9.setStyleSheet(u"background-color: rgb(100, 100, 100);")
+        self.line_9.setLineWidth(2)
+        self.line_9.setFrameShape(QFrame.HLine)
+        self.line_9.setFrameShadow(QFrame.Sunken)
+        self.layoutWidget = QWidget(self.frame_10)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(10, 350, 201, 32))
+        self.gridLayout_3 = QGridLayout(self.layoutWidget)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.label_13 = QLabel(self.layoutWidget)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.label_13.setFrameShape(QFrame.NoFrame)
+
+        self.gridLayout_3.addWidget(self.label_13, 0, 0, 1, 1)
+
+        self.lineEdit_zstack_zstackStart_2 = QLineEdit(self.layoutWidget)
+        self.lineEdit_zstack_zstackStart_2.setObjectName(u"lineEdit_zstack_zstackStart_2")
+        self.lineEdit_zstack_zstackStart_2.setMinimumSize(QSize(60, 30))
+        self.lineEdit_zstack_zstackStart_2.setMaximumSize(QSize(60, 30))
+        self.lineEdit_zstack_zstackStart_2.setLayoutDirection(Qt.LeftToRight)
+        self.lineEdit_zstack_zstackStart_2.setStyleSheet(u"QLineEdit{\n"
+"color: rgb(0,0, 0);\n"
+"	font: 63 8pt \"Segoe UI Semibold\";\n"
+"background-color:rgb(250, 250, 250);\n"
+"border-radius:3px;\n"
+"\n"
+"}\n"
+"")
+        self.lineEdit_zstack_zstackStart_2.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_3.addWidget(self.lineEdit_zstack_zstackStart_2, 0, 1, 1, 1)
+
+        self.layoutWidget_3 = QWidget(self.frame_10)
+        self.layoutWidget_3.setObjectName(u"layoutWidget_3")
+        self.layoutWidget_3.setGeometry(QRect(10, 90, 201, 32))
+        self.gridLayout_5 = QGridLayout(self.layoutWidget_3)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.label_15 = QLabel(self.layoutWidget_3)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.label_15.setFrameShape(QFrame.NoFrame)
+
+        self.gridLayout_5.addWidget(self.label_15, 0, 0, 1, 1)
+
+        self.lineEdit_zstack_zstackStart_4 = QLineEdit(self.layoutWidget_3)
+        self.lineEdit_zstack_zstackStart_4.setObjectName(u"lineEdit_zstack_zstackStart_4")
+        self.lineEdit_zstack_zstackStart_4.setMinimumSize(QSize(100, 30))
+        self.lineEdit_zstack_zstackStart_4.setMaximumSize(QSize(100, 30))
+        self.lineEdit_zstack_zstackStart_4.setLayoutDirection(Qt.LeftToRight)
+        self.lineEdit_zstack_zstackStart_4.setStyleSheet(u"QLineEdit{\n"
+"color: rgb(0,0, 0);\n"
+"	font: 63 8pt \"Segoe UI Semibold\";\n"
+"background-color:rgb(250, 250, 250);\n"
+"border-radius:3px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.lineEdit_zstack_zstackStart_4.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_5.addWidget(self.lineEdit_zstack_zstackStart_4, 0, 1, 1, 1)
+
+        self.label_16 = QLabel(self.frame_10)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setGeometry(QRect(10, 50, 111, 20))
+        self.label_16.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.line_10 = QFrame(self.frame_10)
+        self.line_10.setObjectName(u"line_10")
+        self.line_10.setGeometry(QRect(10, 70, 150, 1))
+        self.line_10.setStyleSheet(u"background-color: rgb(100, 100, 100);")
+        self.line_10.setLineWidth(2)
+        self.line_10.setFrameShape(QFrame.HLine)
+        self.line_10.setFrameShadow(QFrame.Sunken)
+        self.widget = QWidget(self.frame_10)
+        self.widget.setObjectName(u"widget")
+        self.widget.setGeometry(QRect(10, 310, 201, 32))
+        self.gridLayout_2 = QGridLayout(self.widget)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.label_7 = QLabel(self.widget)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.label_7.setFrameShape(QFrame.NoFrame)
+
+        self.gridLayout_2.addWidget(self.label_7, 0, 0, 1, 1)
+
+        self.lineEdit_zstack_zstackStart = QLineEdit(self.widget)
+        self.lineEdit_zstack_zstackStart.setObjectName(u"lineEdit_zstack_zstackStart")
+        self.lineEdit_zstack_zstackStart.setMinimumSize(QSize(60, 30))
+        self.lineEdit_zstack_zstackStart.setMaximumSize(QSize(60, 30))
+        self.lineEdit_zstack_zstackStart.setLayoutDirection(Qt.LeftToRight)
+        self.lineEdit_zstack_zstackStart.setStyleSheet(u"QLineEdit{\n"
+"color: rgb(0,0, 0);\n"
+"	font: 63 8pt \"Segoe UI Semibold\";\n"
+"background-color:rgb(250, 250, 250);\n"
+"border-radius:3px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.lineEdit_zstack_zstackStart.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.lineEdit_zstack_zstackStart, 0, 1, 1, 1)
+
+        self.widget1 = QWidget(self.frame_10)
+        self.widget1.setObjectName(u"widget1")
+        self.widget1.setGeometry(QRect(10, 130, 201, 121))
+        self.gridLayout_4 = QGridLayout(self.widget1)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.label_14 = QLabel(self.widget1)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.label_14.setFrameShape(QFrame.NoFrame)
+
+        self.gridLayout_4.addWidget(self.label_14, 0, 0, 1, 1)
+
+        self.plainTextEdit = QPlainTextEdit(self.widget1)
+        self.plainTextEdit.setObjectName(u"plainTextEdit")
+        self.plainTextEdit.setMinimumSize(QSize(100, 100))
+        self.plainTextEdit.setMaximumSize(QSize(100, 100))
+        self.plainTextEdit.viewport().setProperty("cursor", QCursor(Qt.IBeamCursor))
+        self.plainTextEdit.setStyleSheet(u"QPlainTextEdit{\n"
+"color: rgb(0,0, 0);\n"
+"font: 63 8pt \"Segoe UI Semibold\";\n"
+"background-color:rgb(250, 250, 250);\n"
+"border-radius:3px;\n"
+"\n"
+"}\n"
+"\n"
+"")
+        self.plainTextEdit.setFrameShape(QFrame.NoFrame)
+
+        self.gridLayout_4.addWidget(self.plainTextEdit, 0, 1, 1, 1)
+
 
         self.verticalLayout_11.addWidget(self.frame_10)
 
@@ -1267,13 +1742,13 @@ class Ui_MainWindow(object):
         self.line_8.setLineWidth(2)
         self.line_8.setFrameShape(QFrame.HLine)
         self.line_8.setFrameShadow(QFrame.Sunken)
-        self.widget = QWidget(self.page_8)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(20, 40, 151, 71))
-        self.gridLayout = QGridLayout(self.widget)
+        self.widget2 = QWidget(self.page_8)
+        self.widget2.setObjectName(u"widget2")
+        self.widget2.setGeometry(QRect(20, 40, 151, 71))
+        self.gridLayout = QGridLayout(self.widget2)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_lowerGrip_6 = QLabel(self.widget)
+        self.label_lowerGrip_6 = QLabel(self.widget2)
         self.label_lowerGrip_6.setObjectName(u"label_lowerGrip_6")
         self.label_lowerGrip_6.setStyleSheet(u"QLabel{\n"
 "color: rgb(200, 200, 200);\n"
@@ -1283,7 +1758,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_lowerGrip_6, 0, 0, 1, 1)
 
-        self.frame_result8bit = QFrame(self.widget)
+        self.frame_result8bit = QFrame(self.widget2)
         self.frame_result8bit.setObjectName(u"frame_result8bit")
         self.frame_result8bit.setMinimumSize(QSize(60, 30))
         self.frame_result8bit.setMaximumSize(QSize(60, 30))
@@ -1294,7 +1769,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.frame_result8bit, 0, 1, 1, 1)
 
-        self.label_lowerGrip_7 = QLabel(self.widget)
+        self.label_lowerGrip_7 = QLabel(self.widget2)
         self.label_lowerGrip_7.setObjectName(u"label_lowerGrip_7")
         self.label_lowerGrip_7.setStyleSheet(u"QLabel{\n"
 "color: rgb(200, 200, 200);\n"
@@ -1304,7 +1779,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_lowerGrip_7, 1, 0, 1, 1)
 
-        self.frame_results16bit = QFrame(self.widget)
+        self.frame_results16bit = QFrame(self.widget2)
         self.frame_results16bit.setObjectName(u"frame_results16bit")
         self.frame_results16bit.setMinimumSize(QSize(60, 30))
         self.frame_results16bit.setMaximumSize(QSize(60, 30))
@@ -1376,7 +1851,417 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.frame_rightMenu)
 
 
-        self.verticalLayout.addWidget(self.frame_scaffold)
+        self.verticalLayout_12.addWidget(self.frame_scaffold)
+
+        self.stackedWidget_mainPage.addWidget(self.page_10)
+        self.page_11 = QWidget()
+        self.page_11.setObjectName(u"page_11")
+        self.verticalLayout_13 = QVBoxLayout(self.page_11)
+        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.frame_11 = QFrame(self.page_11)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setFrameShape(QFrame.NoFrame)
+        self.frame_11.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_11)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.frame_12 = QFrame(self.frame_11)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setMinimumSize(QSize(250, 500))
+        self.frame_12.setMaximumSize(QSize(250, 500))
+        self.frame_12.setStyleSheet(u"background-color: rgb(40, 40, 40);\n"
+"border-bottom-right-radius: 115px;\n"
+"border-top-right-radius: 115px;")
+        self.frame_12.setFrameShape(QFrame.NoFrame)
+        self.frame_12.setFrameShadow(QFrame.Raised)
+        self.label_17 = QLabel(self.frame_12)
+        self.label_17.setObjectName(u"label_17")
+        self.label_17.setGeometry(QRect(10, 130, 181, 20))
+        self.label_17.setStyleSheet(u"color: rgb(200, 200, 200);\n"
+"font: 87 9pt \"Segoe UI Black\";")
+        self.label_18 = QLabel(self.frame_12)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setGeometry(QRect(20, 80, 181, 31))
+        self.label_18.setStyleSheet(u"font: 87 12pt \"Segoe UI Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.label_18.setAlignment(Qt.AlignCenter)
+        self.frame_progress = QFrame(self.frame_12)
+        self.frame_progress.setObjectName(u"frame_progress")
+        self.frame_progress.setGeometry(QRect(60, 170, 110, 110))
+        self.frame_progress.setMinimumSize(QSize(110, 110))
+        self.frame_progress.setMaximumSize(QSize(110, 110))
+        self.frame_progress.setFrameShape(QFrame.NoFrame)
+        self.frame_progress.setFrameShadow(QFrame.Raised)
+        self.frame_33 = QFrame(self.frame_progress)
+        self.frame_33.setObjectName(u"frame_33")
+        self.frame_33.setGeometry(QRect(30, 30, 50, 50))
+        self.frame_33.setMinimumSize(QSize(50, 50))
+        self.frame_33.setMaximumSize(QSize(50, 50))
+        self.frame_33.setStyleSheet(u"background-color: rgb(200, 200, 200);\n"
+"border-radius :25px;")
+        self.frame_33.setFrameShape(QFrame.NoFrame)
+        self.frame_33.setFrameShadow(QFrame.Raised)
+        self.line_11 = QFrame(self.frame_12)
+        self.line_11.setObjectName(u"line_11")
+        self.line_11.setGeometry(QRect(10, 110, 220, 3))
+        self.line_11.setStyleSheet(u"background-color: rgb(100, 100, 100);")
+        self.line_11.setLineWidth(2)
+        self.line_11.setFrameShape(QFrame.HLine)
+        self.line_11.setFrameShadow(QFrame.Sunken)
+        self.pushButton_finishProgress = QPushButton(self.frame_12)
+        self.pushButton_finishProgress.setObjectName(u"pushButton_finishProgress")
+        self.pushButton_finishProgress.setGeometry(QRect(130, 310, 80, 30))
+        self.pushButton_finishProgress.setMinimumSize(QSize(80, 30))
+        self.pushButton_finishProgress.setMaximumSize(QSize(80, 30))
+        self.pushButton_finishProgress.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_finishProgress.setStyleSheet(u"QPushButton{\n"
+"font: 63 10pt \"Segoe UI Semibold\";\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgba(150, 150, 150,100);\n"
+"border-radius:15px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}\n"
+"QPushButton::hover{\n"
+"background-color: rgb(0, 130, 0);\n"
+"border-radius:15px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}")
+        self.pushButton_cancelProgress = QPushButton(self.frame_12)
+        self.pushButton_cancelProgress.setObjectName(u"pushButton_cancelProgress")
+        self.pushButton_cancelProgress.setGeometry(QRect(20, 310, 80, 30))
+        self.pushButton_cancelProgress.setMinimumSize(QSize(80, 30))
+        self.pushButton_cancelProgress.setMaximumSize(QSize(80, 30))
+        self.pushButton_cancelProgress.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_cancelProgress.setStyleSheet(u"QPushButton{\n"
+"font: 63 10pt \"Segoe UI Semibold\";\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgba(150, 150, 150,100);\n"
+"border-radius:15px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}\n"
+"QPushButton::hover{\n"
+"background-color: rgb(130, 0, 0);\n"
+"border-radius:15px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}")
+
+        self.horizontalLayout_11.addWidget(self.frame_12, 0, Qt.AlignVCenter)
+
+        self.frame_13 = QFrame(self.frame_11)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setFrameShape(QFrame.NoFrame)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_15 = QVBoxLayout(self.frame_13)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.pictureBox_progress = QtImageViewer_preview()
+        self.pictureBox_progress.setObjectName(u"pictureBox_progress")
+        sizePolicy.setHeightForWidth(self.pictureBox_progress.sizePolicy().hasHeightForWidth())
+        self.pictureBox_progress.setSizePolicy(sizePolicy)
+        self.pictureBox_progress.setMinimumSize(QSize(535, 0))
+        self.pictureBox_progress.setMaximumSize(QSize(16777215, 16777215))
+        self.pictureBox_progress.setMouseTracking(False)
+        self.pictureBox_progress.setStyleSheet(u"QGraphicsView{\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"border:none;\n"
+"}\n"
+"\n"
+" QScrollBar:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     height: 15px;\n"
+"\n"
+"     margin: 3px 15px 3px 15px;\n"
+"\n"
+"     border: 1px transparent #2A2929;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+"     background-color:rgb(49, 51, 50) ;  \n"
+"\n"
+"	\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::handle:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     background-color: white;      /* #605F5F; */\n"
+"\n"
+"     min-width: 5px;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 0px 3px 0px 3px;\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     subcontrol-position: right;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 0px 3px 0px 3px;\n"
+"\n"
+"     border-imag"
+                        "e: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: left;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
+"\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: right;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
+"\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: left;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" QScrol"
+                        "lBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     \n"
+"\n"
+"	background-color: rgb(49, 51, 50);\n"
+"\n"
+"     width: 15px;\n"
+"\n"
+"     margin: 15px 3px 15px 3px;\n"
+"\n"
+"     border: 1px transparent #2A2929;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::handle:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     background-color: white;         /* #605F5F; */\n"
+"\n"
+"     min-height: 5px;\n"
+"\n"
+"     border-radius: 4px;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 3px 0px 3px 0px;\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: top;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     margin: 3px 0px 3px 0px;\n"
+"\n"
+"     bor"
+                        "der-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: bottom;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
+"\n"
+" {\n"
+"\n"
+"\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: top;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on\n"
+"\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
+"\n"
+"     height: 10px;\n"
+"\n"
+"     width: 10px;\n"
+"\n"
+"     subcontrol-position: bottom;\n"
+"\n"
+"     subcontrol-origin: margin;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" Q"
+                        "ScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+"\n"
+" {\n"
+"\n"
+"     background: none;\n"
+"\n"
+" }")
+        self.pictureBox_progress.setFrameShape(QFrame.NoFrame)
+        self.pictureBox_progress.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_15.addWidget(self.pictureBox_progress)
+
+
+        self.horizontalLayout_11.addWidget(self.frame_13)
+
+
+        self.verticalLayout_13.addWidget(self.frame_11)
+
+        self.stackedWidget_mainPage.addWidget(self.page_11)
+
+        self.verticalLayout.addWidget(self.stackedWidget_mainPage)
 
 
         self.horizontalLayout.addWidget(self.frame_main)
@@ -1388,11 +2273,13 @@ class Ui_MainWindow(object):
         self.pushButton_minimize.setDefault(False)
         self.pushButton_maximize.setDefault(False)
         self.pushButton_exit.setDefault(False)
+        self.stackedWidget_mainPage.setCurrentIndex(0)
+        self.stackedWidget_camera.setCurrentIndex(1)
         self.stackedWidget_bottom.setCurrentIndex(1)
         self.pushButton_preview.setDefault(False)
         self.pushButton_video.setDefault(False)
         self.pushButton_results.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_results.setCurrentIndex(0)
 
 
@@ -1450,6 +2337,16 @@ class Ui_MainWindow(object):
         self.label_lowerGrip.setText(QCoreApplication.translate("MainWindow", u"Lower Grip : 100", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"LUT", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"Experiment", None))
+        self.pushButton_experimentStart.setText("")
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Parameters  : ", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Delay (ms) :", None))
+        self.lineEdit_zstack_zstackStart_2.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Project Name :", None))
+        self.lineEdit_zstack_zstackStart_4.setText(QCoreApplication.translate("MainWindow", u"Test_1", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Project :", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Captures :", None))
+        self.lineEdit_zstack_zstackStart.setText(QCoreApplication.translate("MainWindow", u"100", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Description :", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Data Save", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Data  : ", None))
         self.pushButton_cap_2.setText(QCoreApplication.translate("MainWindow", u"Save", None))
@@ -1464,5 +2361,9 @@ class Ui_MainWindow(object):
         self.label_lowerGrip_7.setText(QCoreApplication.translate("MainWindow", u"16 bit : ", None))
         self.label_87.setText(QCoreApplication.translate("MainWindow", u"Data Saving :", None))
         self.pushButton_cancelSaving.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Progress :", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Processing", None))
+        self.pushButton_finishProgress.setText(QCoreApplication.translate("MainWindow", u"Finish", None))
+        self.pushButton_cancelProgress.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
     # retranslateUi
 

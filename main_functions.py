@@ -78,6 +78,7 @@ class AppFunctions(QMainWindow):
     def initialSettings(self):
         self.maxCapture = 100
         self.noAvailableExperiment = False
+        self.ui.stackedWidget_mainPage.setCurrentIndex(0)
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.stackedWidget_bottom.setCurrentIndex(0)
         self.ui.stackedWidget_results.setCurrentIndex(0)
