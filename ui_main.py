@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'maingCHcae.ui'
+## Form generated from reading UI file 'mainSuNOHT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -1515,12 +1515,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.label_13, 0, 0, 1, 1)
 
-        self.lineEdit_zstack_zstackStart_2 = QLineEdit(self.layoutWidget)
-        self.lineEdit_zstack_zstackStart_2.setObjectName(u"lineEdit_zstack_zstackStart_2")
-        self.lineEdit_zstack_zstackStart_2.setMinimumSize(QSize(60, 30))
-        self.lineEdit_zstack_zstackStart_2.setMaximumSize(QSize(60, 30))
-        self.lineEdit_zstack_zstackStart_2.setLayoutDirection(Qt.LeftToRight)
-        self.lineEdit_zstack_zstackStart_2.setStyleSheet(u"QLineEdit{\n"
+        self.lineEdit_delay = QLineEdit(self.layoutWidget)
+        self.lineEdit_delay.setObjectName(u"lineEdit_delay")
+        self.lineEdit_delay.setMinimumSize(QSize(60, 30))
+        self.lineEdit_delay.setMaximumSize(QSize(60, 30))
+        self.lineEdit_delay.setLayoutDirection(Qt.LeftToRight)
+        self.lineEdit_delay.setStyleSheet(u"QLineEdit{\n"
 "color: rgb(0,0, 0);\n"
 "	font: 63 8pt \"Segoe UI Semibold\";\n"
 "background-color:rgb(250, 250, 250);\n"
@@ -1528,9 +1528,9 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        self.lineEdit_zstack_zstackStart_2.setAlignment(Qt.AlignCenter)
+        self.lineEdit_delay.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.lineEdit_zstack_zstackStart_2, 0, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.lineEdit_delay, 0, 1, 1, 1)
 
         self.layoutWidget_3 = QWidget(self.frame_10)
         self.layoutWidget_3.setObjectName(u"layoutWidget_3")
@@ -1546,12 +1546,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_5.addWidget(self.label_15, 0, 0, 1, 1)
 
-        self.lineEdit_zstack_zstackStart_4 = QLineEdit(self.layoutWidget_3)
-        self.lineEdit_zstack_zstackStart_4.setObjectName(u"lineEdit_zstack_zstackStart_4")
-        self.lineEdit_zstack_zstackStart_4.setMinimumSize(QSize(100, 30))
-        self.lineEdit_zstack_zstackStart_4.setMaximumSize(QSize(100, 30))
-        self.lineEdit_zstack_zstackStart_4.setLayoutDirection(Qt.LeftToRight)
-        self.lineEdit_zstack_zstackStart_4.setStyleSheet(u"QLineEdit{\n"
+        self.lineEdit_projectName = QLineEdit(self.layoutWidget_3)
+        self.lineEdit_projectName.setObjectName(u"lineEdit_projectName")
+        self.lineEdit_projectName.setMinimumSize(QSize(100, 30))
+        self.lineEdit_projectName.setMaximumSize(QSize(100, 30))
+        self.lineEdit_projectName.setLayoutDirection(Qt.LeftToRight)
+        self.lineEdit_projectName.setStyleSheet(u"QLineEdit{\n"
 "color: rgb(0,0, 0);\n"
 "	font: 63 8pt \"Segoe UI Semibold\";\n"
 "background-color:rgb(250, 250, 250);\n"
@@ -1561,9 +1561,9 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.lineEdit_zstack_zstackStart_4.setAlignment(Qt.AlignCenter)
+        self.lineEdit_projectName.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_5.addWidget(self.lineEdit_zstack_zstackStart_4, 0, 1, 1, 1)
+        self.gridLayout_5.addWidget(self.lineEdit_projectName, 0, 1, 1, 1)
 
         self.label_16 = QLabel(self.frame_10)
         self.label_16.setObjectName(u"label_16")
@@ -1591,12 +1591,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_7, 0, 0, 1, 1)
 
-        self.lineEdit_zstack_zstackStart = QLineEdit(self.widget)
-        self.lineEdit_zstack_zstackStart.setObjectName(u"lineEdit_zstack_zstackStart")
-        self.lineEdit_zstack_zstackStart.setMinimumSize(QSize(60, 30))
-        self.lineEdit_zstack_zstackStart.setMaximumSize(QSize(60, 30))
-        self.lineEdit_zstack_zstackStart.setLayoutDirection(Qt.LeftToRight)
-        self.lineEdit_zstack_zstackStart.setStyleSheet(u"QLineEdit{\n"
+        self.lineEdit_captureCount = QLineEdit(self.widget)
+        self.lineEdit_captureCount.setObjectName(u"lineEdit_captureCount")
+        self.lineEdit_captureCount.setMinimumSize(QSize(60, 30))
+        self.lineEdit_captureCount.setMaximumSize(QSize(60, 30))
+        self.lineEdit_captureCount.setLayoutDirection(Qt.LeftToRight)
+        self.lineEdit_captureCount.setStyleSheet(u"QLineEdit{\n"
 "color: rgb(0,0, 0);\n"
 "	font: 63 8pt \"Segoe UI Semibold\";\n"
 "background-color:rgb(250, 250, 250);\n"
@@ -1606,9 +1606,9 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.lineEdit_zstack_zstackStart.setAlignment(Qt.AlignCenter)
+        self.lineEdit_captureCount.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.lineEdit_zstack_zstackStart, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_captureCount, 0, 1, 1, 1)
 
         self.widget1 = QWidget(self.frame_10)
         self.widget1.setObjectName(u"widget1")
@@ -1624,12 +1624,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.label_14, 0, 0, 1, 1)
 
-        self.plainTextEdit = QPlainTextEdit(self.widget1)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setMinimumSize(QSize(100, 100))
-        self.plainTextEdit.setMaximumSize(QSize(100, 100))
-        self.plainTextEdit.viewport().setProperty("cursor", QCursor(Qt.IBeamCursor))
-        self.plainTextEdit.setStyleSheet(u"QPlainTextEdit{\n"
+        self.plainTextEdit_description = QPlainTextEdit(self.widget1)
+        self.plainTextEdit_description.setObjectName(u"plainTextEdit_description")
+        self.plainTextEdit_description.setMinimumSize(QSize(100, 100))
+        self.plainTextEdit_description.setMaximumSize(QSize(100, 100))
+        self.plainTextEdit_description.viewport().setProperty("cursor", QCursor(Qt.IBeamCursor))
+        self.plainTextEdit_description.setStyleSheet(u"QPlainTextEdit{\n"
 "color: rgb(0,0, 0);\n"
 "font: 63 8pt \"Segoe UI Semibold\";\n"
 "background-color:rgb(250, 250, 250);\n"
@@ -1638,9 +1638,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.plainTextEdit.setFrameShape(QFrame.NoFrame)
+        self.plainTextEdit_description.setFrameShape(QFrame.NoFrame)
 
-        self.gridLayout_4.addWidget(self.plainTextEdit, 0, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.plainTextEdit_description, 0, 1, 1, 1)
 
 
         self.verticalLayout_11.addWidget(self.frame_10)
@@ -1911,31 +1911,17 @@ class Ui_MainWindow(object):
         self.line_11.setLineWidth(2)
         self.line_11.setFrameShape(QFrame.HLine)
         self.line_11.setFrameShadow(QFrame.Sunken)
-        self.pushButton_finishProgress = QPushButton(self.frame_12)
-        self.pushButton_finishProgress.setObjectName(u"pushButton_finishProgress")
-        self.pushButton_finishProgress.setGeometry(QRect(130, 310, 80, 30))
-        self.pushButton_finishProgress.setMinimumSize(QSize(80, 30))
-        self.pushButton_finishProgress.setMaximumSize(QSize(80, 30))
-        self.pushButton_finishProgress.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_finishProgress.setStyleSheet(u"QPushButton{\n"
-"font: 63 10pt \"Segoe UI Semibold\";\n"
-"color: rgb(255, 255, 255);\n"
-"background-color: rgba(150, 150, 150,100);\n"
-"border-radius:15px;\n"
-"border:none;\n"
-"background-repeat: no-repeat;\n"
-"background-position: center;\n"
-"}\n"
-"QPushButton::hover{\n"
-"background-color: rgb(0, 130, 0);\n"
-"border-radius:15px;\n"
-"border:none;\n"
-"background-repeat: no-repeat;\n"
-"background-position: center;\n"
-"}")
-        self.pushButton_cancelProgress = QPushButton(self.frame_12)
+        self.frame_14 = QFrame(self.frame_12)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setGeometry(QRect(20, 310, 200, 48))
+        self.frame_14.setMinimumSize(QSize(200, 0))
+        self.frame_14.setMaximumSize(QSize(200, 16777215))
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.frame_14)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.pushButton_cancelProgress = QPushButton(self.frame_14)
         self.pushButton_cancelProgress.setObjectName(u"pushButton_cancelProgress")
-        self.pushButton_cancelProgress.setGeometry(QRect(20, 310, 80, 30))
         self.pushButton_cancelProgress.setMinimumSize(QSize(80, 30))
         self.pushButton_cancelProgress.setMaximumSize(QSize(80, 30))
         self.pushButton_cancelProgress.setCursor(QCursor(Qt.PointingHandCursor))
@@ -1956,6 +1942,33 @@ class Ui_MainWindow(object):
 "background-position: center;\n"
 "}")
 
+        self.horizontalLayout_12.addWidget(self.pushButton_cancelProgress)
+
+        self.pushButton_finishProgress = QPushButton(self.frame_14)
+        self.pushButton_finishProgress.setObjectName(u"pushButton_finishProgress")
+        self.pushButton_finishProgress.setMinimumSize(QSize(80, 30))
+        self.pushButton_finishProgress.setMaximumSize(QSize(80, 30))
+        self.pushButton_finishProgress.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_finishProgress.setStyleSheet(u"QPushButton{\n"
+"font: 63 10pt \"Segoe UI Semibold\";\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgba(150, 150, 150,100);\n"
+"border-radius:15px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}\n"
+"QPushButton::hover{\n"
+"background-color: rgb(0, 130, 0);\n"
+"border-radius:15px;\n"
+"border:none;\n"
+"background-repeat: no-repeat;\n"
+"background-position: center;\n"
+"}")
+
+        self.horizontalLayout_12.addWidget(self.pushButton_finishProgress)
+
+
         self.horizontalLayout_11.addWidget(self.frame_12, 0, Qt.AlignVCenter)
 
         self.frame_13 = QFrame(self.frame_11)
@@ -1964,294 +1977,10 @@ class Ui_MainWindow(object):
         self.frame_13.setFrameShadow(QFrame.Raised)
         self.verticalLayout_15 = QVBoxLayout(self.frame_13)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.pictureBox_progress = QtImageViewer_preview()
-        self.pictureBox_progress.setObjectName(u"pictureBox_progress")
-        sizePolicy.setHeightForWidth(self.pictureBox_progress.sizePolicy().hasHeightForWidth())
-        self.pictureBox_progress.setSizePolicy(sizePolicy)
-        self.pictureBox_progress.setMinimumSize(QSize(535, 0))
-        self.pictureBox_progress.setMaximumSize(QSize(16777215, 16777215))
-        self.pictureBox_progress.setMouseTracking(False)
-        self.pictureBox_progress.setStyleSheet(u"QGraphicsView{\n"
-"background-repeat: no-repeat;\n"
-"background-position: center;\n"
-"border:none;\n"
-"}\n"
-"\n"
-" QScrollBar:horizontal\n"
-"\n"
-" {\n"
-"\n"
-"     height: 15px;\n"
-"\n"
-"     margin: 3px 15px 3px 15px;\n"
-"\n"
-"     border: 1px transparent #2A2929;\n"
-"\n"
-"     border-radius: 4px;\n"
-"\n"
-"     background-color:rgb(49, 51, 50) ;  \n"
-"\n"
-"	\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::handle:horizontal\n"
-"\n"
-" {\n"
-"\n"
-"     background-color: white;      /* #605F5F; */\n"
-"\n"
-"     min-width: 5px;\n"
-"\n"
-"     border-radius: 4px;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::add-line:horizontal\n"
-"\n"
-" {\n"
-"\n"
-"     margin: 0px 3px 0px 3px;\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     subcontrol-position: right;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:horizontal\n"
-"\n"
-" {\n"
-"\n"
-"     margin: 0px 3px 0px 3px;\n"
-"\n"
-"     border-imag"
-                        "e: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: left;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
-"\n"
-" {\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: right;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
-"\n"
-" {\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: left;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
-"\n"
-" {\n"
-"\n"
-"     background: none;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-" QScrol"
-                        "lBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
-"\n"
-" {\n"
-"\n"
-"     background: none;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar:vertical\n"
-"\n"
-" {\n"
-"\n"
-"     \n"
-"\n"
-"	background-color: rgb(49, 51, 50);\n"
-"\n"
-"     width: 15px;\n"
-"\n"
-"     margin: 15px 3px 15px 3px;\n"
-"\n"
-"     border: 1px transparent #2A2929;\n"
-"\n"
-"     border-radius: 4px;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::handle:vertical\n"
-"\n"
-" {\n"
-"\n"
-"     background-color: white;         /* #605F5F; */\n"
-"\n"
-"     min-height: 5px;\n"
-"\n"
-"     border-radius: 4px;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:vertical\n"
-"\n"
-" {\n"
-"\n"
-"     margin: 3px 0px 3px 0px;\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: top;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::add-line:vertical\n"
-"\n"
-" {\n"
-"\n"
-"     margin: 3px 0px 3px 0px;\n"
-"\n"
-"     bor"
-                        "der-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: bottom;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
-"\n"
-" {\n"
-"\n"
-"\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: top;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on\n"
-"\n"
-" {\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
-"\n"
-"     height: 10px;\n"
-"\n"
-"     width: 10px;\n"
-"\n"
-"     subcontrol-position: bottom;\n"
-"\n"
-"     subcontrol-origin: margin;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
-"\n"
-" {\n"
-"\n"
-"     background: none;\n"
-"\n"
-" }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-" Q"
-                        "ScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
-"\n"
-" {\n"
-"\n"
-"     background: none;\n"
-"\n"
-" }")
-        self.pictureBox_progress.setFrameShape(QFrame.NoFrame)
-        self.pictureBox_progress.setFrameShadow(QFrame.Sunken)
+        self.label_pictureBoxloading = QLabel(self.frame_13)
+        self.label_pictureBoxloading.setObjectName(u"label_pictureBoxloading")
 
-        self.verticalLayout_15.addWidget(self.pictureBox_progress)
+        self.verticalLayout_15.addWidget(self.label_pictureBoxloading)
 
 
         self.horizontalLayout_11.addWidget(self.frame_13)
@@ -2279,7 +2008,7 @@ class Ui_MainWindow(object):
         self.pushButton_preview.setDefault(False)
         self.pushButton_video.setDefault(False)
         self.pushButton_results.setDefault(False)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
         self.stackedWidget_results.setCurrentIndex(0)
 
 
@@ -2340,12 +2069,12 @@ class Ui_MainWindow(object):
         self.pushButton_experimentStart.setText("")
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Parameters  : ", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"Delay (ms) :", None))
-        self.lineEdit_zstack_zstackStart_2.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.lineEdit_delay.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.label_15.setText(QCoreApplication.translate("MainWindow", u"Project Name :", None))
-        self.lineEdit_zstack_zstackStart_4.setText(QCoreApplication.translate("MainWindow", u"Test_1", None))
+        self.lineEdit_projectName.setText(QCoreApplication.translate("MainWindow", u"Test_1", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Project :", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Captures :", None))
-        self.lineEdit_zstack_zstackStart.setText(QCoreApplication.translate("MainWindow", u"100", None))
+        self.lineEdit_captureCount.setText(QCoreApplication.translate("MainWindow", u"100", None))
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Description :", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Data Save", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Data  : ", None))
@@ -2363,7 +2092,8 @@ class Ui_MainWindow(object):
         self.pushButton_cancelSaving.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"Progress :", None))
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"Processing", None))
-        self.pushButton_finishProgress.setText(QCoreApplication.translate("MainWindow", u"Finish", None))
         self.pushButton_cancelProgress.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.pushButton_finishProgress.setText(QCoreApplication.translate("MainWindow", u"Finish", None))
+        self.label_pictureBoxloading.setText("")
     # retranslateUi
 

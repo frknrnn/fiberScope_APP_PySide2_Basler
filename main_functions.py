@@ -41,6 +41,7 @@ class AppFunctions(QMainWindow):
         self.ui.pushButton_video.clicked.connect(self.showVideo)
         self.ui.pushButton_results.clicked.connect(self.showResults)
 
+        self.ui.pushButton_cancelProgress.clicked.connect(self.changeCancelStatus)
 
         self.ui.radioButton_8bit.toggled.connect(self.show_8_16_bit_Preview)
         self.ui.radioButton_16bit.toggled.connect(self.show_8_16_bit_Preview)
@@ -52,7 +53,10 @@ class AppFunctions(QMainWindow):
         self.ui.pushButton_resultCaptureLeft.clicked.connect(self.previous_capture)
         self.ui.pushButton_resultCaptureRight.clicked.connect(self.next_capture)
 
+        self.ui.pushButton_experimentStart.clicked.connect(self.startExperiment)
         self.ui.pushButton_cap.clicked.connect(self.quickTakeCap)
+
+        self.ui.pushButton_finishProgress.clicked.connect(self.showResult_data)
 
         self.createCustomWidgets()
         self.startCam(1280, 960, 0)
@@ -74,6 +78,75 @@ class AppFunctions(QMainWindow):
                     event.accept()
 
         self.ui.frame_tabBar.mouseMoveEvent=moveWindow
+
+    def showResult_data(self):
+        self.cam.real_mode_active()
+        self.ui.stackedWidget_mainPage.setCurrentIndex(0)
+        self.showResults()
+        self.load_image_result(self.main_data[0])
+
+    def changeCancelStatus(self):
+        self.cancelStatus = True
+
+
+    def startExperiment(self):
+        self.cancelStatus = False
+        self.checkParameters()
+        self.ui.stackedWidget_mainPage.setCurrentIndex(1)
+        self.ui.pushButton_finishProgress.setDisabled(True)
+        self.ui.pushButton_finishProgress.hide()
+        self.main_data = []
+        self.loadingSliderTimer = QTimer()
+        self.loadingSliderTimer.timeout.connect(self.updateParameterLoading)
+        x = threading.Thread(target=self.normal_proccess)
+        x.start()
+        self.loadingSliderTimer.start(100)
+    def checkParameters(self):
+        #todo check Parameter Control
+        self.total_capture_count = int(self.ui.lineEdit_captureCount.text())
+        self.delay_ms = float(self.ui.lineEdit_delay.text())/1000
+
+    def updateLoadingImage(self, image):
+        image = self.bytescaling(image)
+        height, width, channels = np.array(image).shape
+        bytesPerLine = channels * width
+        qImg = QImage(image.data, width, height, bytesPerLine, QImage.Format_Grayscale8)
+        pixmap01 = QPixmap.fromImage(qImg)
+        pixmap_image = QPixmap(pixmap01)
+
+        self.ui.label_pictureBoxloading.setPixmap(pixmap_image)
+        self.ui.label_pictureBoxloading.setAlignment(Qt.AlignCenter)
+        self.ui.label_pictureBoxloading.setScaledContents(True)
+        self.ui.label_pictureBoxloading.setMinimumSize(1, 1)
+        self.ui.label_pictureBoxloading.show()
+
+    def normal_proccess(self):
+        self.cam.real_mode_deactive()
+        self.captures_count = -1
+        for i in range(self.total_capture_count):
+            if(self.cancelStatus):
+                break
+            image = self.cam.takeCap()
+            self.main_data.append(image)
+            self.updateLoadingImage(image)
+            self.captures_count+=1
+            time.sleep(self.delay_ms)
+        if(self.cancelStatus):
+            self.loadingSliderTimer.stop()
+            self.ui.stackedWidget_mainPage.setCurrentIndex(0)
+            self.cam.real_mode_active()
+            pass
+        else:
+            self.loadingSliderTimer.stop()
+            self.ui.pushButton_finishProgress.setDisabled(False)
+            self.ui.pushButton_finishProgress.show()
+
+    def updateParameterLoading(self):
+        i = self.captures_count
+        total = self.total_capture_count
+        self.capturesPercent = int(((i + 1) / total) * 100)
+        self.loadingProgress.set_value(self.capturesPercent)
+
 
     def initialSettings(self):
         self.maxCapture = 100
@@ -245,9 +318,38 @@ class AppFunctions(QMainWindow):
         self.layout_captures = QVBoxLayout(self.ui.frame_resultCaptureSlider)
         self.layout_captures.addWidget(self.slider_captures, Qt.AlignCenter, Qt.AlignCenter)
 
+        self.loadingProgress = CircularProgress()
+        self.loadingProgress.width = 90
+        self.loadingProgress.height = 90
+        self.loadingProgress.setFixedSize(self.loadingProgress.width, self.loadingProgress.height)
+        self.loadingProgress.move(10, 10)
+        self.loadingProgress.add_shadow(True)
+        self.loadingProgress.font_size = 15
+        self.loadingProgress.text_color = QColor(0, 0, 0)
+        self.loadingProgress.bg_color = QColor(150, 150, 150, 150)
+        self.loadingProgress.progress_color = QColor(0, 0, 200, 150)
+        self.loadingProgress.setParent(self.ui.frame_progress)
+        self.loadingProgress.show()
+
     def changeCaptureSliderIndex(self):
         self.currentCaptureIndex = self.slider_captures.value()
         self.ui.label_resultCaptureIndex.setText(str(self.currentCaptureIndex))
+        self.ui.pictureBox_result.clearImage()
+        self.load_image_result(self.main_data[self.currentCaptureIndex])
+
+
+    def load_image_result(self,cv_img):
+        img = (cv_img / 256).astype('uint8')
+        qt_img = self.convert_cv_qt_result(img)
+        self.ui.pictureBox_result.loadImageFromFile(qt_img)
+    def convert_cv_qt_result(self, cv_img):
+        """Convert from an opencv image to QPixmap"""
+        h, w,l= np.array(cv_img).shape
+        self.img=cv_img
+        bytes_per_line = w
+        convert_to_Qt_format = QImage(cv_img.data, w, h, bytes_per_line, QImage.Format_Grayscale8)
+        p = convert_to_Qt_format.scaled(3840, 2160, Qt.KeepAspectRatio)
+        return QPixmap.fromImage(p)  #QPixmap.fromImage(p) or  #p
 
     def next_capture(self):
         index = self.slider_captures.value()
