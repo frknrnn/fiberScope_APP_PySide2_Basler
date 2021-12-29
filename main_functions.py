@@ -37,12 +37,20 @@ class AppFunctions(QMainWindow):
         self.ui.pushButton_maximize.clicked.connect(self.maximize_restore)
         self.ui.pushButton_exit.clicked.connect(self.APP_EXİT)
 
+        self.ui.pushButton_preview.clicked.connect(self.showPreview)
+        self.ui.pushButton_video.clicked.connect(self.showVideo)
+        self.ui.pushButton_results.clicked.connect(self.showResults)
+
+
         self.ui.radioButton_8bit.toggled.connect(self.show_8_16_bit_Preview)
         self.ui.radioButton_16bit.toggled.connect(self.show_8_16_bit_Preview)
         self.ui.checkBox.stateChanged.connect(self.lut_state_changed)
 
         self.ui.pushButton_quickExposure.clicked.connect(self.quickSetExposure)
         self.ui.pushButton_quickGain.clicked.connect(self.quickSetGain)
+
+        self.ui.pushButton_resultCaptureLeft.clicked.connect(self.previous_capture)
+        self.ui.pushButton_resultCaptureRight.clicked.connect(self.next_capture)
 
         self.ui.pushButton_cap.clicked.connect(self.quickTakeCap)
 
@@ -55,6 +63,8 @@ class AppFunctions(QMainWindow):
 
         self.cam.setExposure(0.001)
 
+        self.initialSettings()
+
         def moveWindow(event):
             if(self.windowStatus==0):
                 # IF LEFT CLICK MOVE WINDOW
@@ -64,6 +74,15 @@ class AppFunctions(QMainWindow):
                     event.accept()
 
         self.ui.frame_tabBar.mouseMoveEvent=moveWindow
+
+    def initialSettings(self):
+        self.maxCapture = 100
+        self.noAvailableExperiment = False
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget_bottom.setCurrentIndex(0)
+        self.ui.stackedWidget_results.setCurrentIndex(0)
+        self.ui.stackedWidget_camera.setCurrentIndex(0)
+
 
     def startCam(self,width, heıght,camId):
         self.cam = basler_cam()
@@ -196,6 +215,52 @@ class AppFunctions(QMainWindow):
         self.lutProgress.setParent(self.ui.frame_lut)
         self.lutProgress.show()
 
+        self.bit16Layout = QVBoxLayout(self.ui.frame_16bit)
+        self.bit16Flag = PyToggle()
+        self.bit16Layout.addWidget(self.bit16Flag, Qt.AlignCenter, Qt.AlignCenter)
+
+        self.bit8Layout = QVBoxLayout(self.ui.frame_8bit)
+        self.bit8Flag = PyToggle()
+        self.bit8Layout.addWidget(self.bit8Flag, Qt.AlignCenter, Qt.AlignCenter)
+
+        self.result16bitLayout = QVBoxLayout(self.ui.frame_results16bit)
+        self.result16bitFlag = PyToggle()
+        self.result16bitLayout.addWidget(self.result16bitFlag, Qt.AlignCenter, Qt.AlignCenter)
+
+        self.result8bitLayout = QVBoxLayout(self.ui.frame_result8bit)
+        self.result8bitFlag = PyToggle()
+        self.result8bitLayout.addWidget(self.result8bitFlag, Qt.AlignCenter, Qt.AlignCenter)
+
+        self.slider_captures = PySlider(bg_size=14,
+                                        bg_radius=7,
+                                        handle_size=10,
+                                        handle_radius=5,
+                                        bg_color="#c8c8c8",
+                                        bg_color_hover="#969696",
+                                        )
+        self.slider_captures.setOrientation(Qt.Horizontal)
+        self.slider_captures.setMinimumWidth(250)
+        self.slider_captures.valueChanged.connect(self.changeCaptureSliderIndex)
+        self.layout_captures = QVBoxLayout(self.ui.frame_resultCaptureSlider)
+        self.layout_captures.addWidget(self.slider_captures, Qt.AlignCenter, Qt.AlignCenter)
+
+    def changeCaptureSliderIndex(self):
+        self.currentCaptureIndex = self.slider_captures.value()
+        self.ui.label_resultCaptureIndex.setText(str(self.currentCaptureIndex))
+
+    def next_capture(self):
+        index = self.slider_captures.value()
+        if(index<self.maxCapture-1):
+            index+=1
+        self.slider_captures.setValue(index)
+
+    def previous_capture(self):
+        index = self.slider_captures.value()
+        if(index>0):
+            index-=1
+        self.slider_captures.setValue(index)
+
+
     def quickSetExposure(self):
         userExpValue = float(self.ui.lineEdit_quickExposure.text())
         self.cam.setExposure(userExpValue)
@@ -215,7 +280,7 @@ class AppFunctions(QMainWindow):
 
     def quickTakeCap(self):
 
-        if(self.ui.checkBox_capture_8bit.isChecked() !=True and self.ui.checkBox_capture_16Bit.isChecked() !=True):
+        if(self.bit8Flag.isChecked() !=True and self.bit16Flag.isChecked() !=True):
             self.infoPage = infoPage()
             self.infoPage.loading_ui.label_info.setText("Please select the pixel format.")
             return
@@ -246,10 +311,10 @@ class AppFunctions(QMainWindow):
 
         directory = self.quickDirectory
         cap_image = self.cam.takeCap()
-        if (self.ui.checkBox_capture_16Bit.isChecked()):
+        if (self.bit16Flag.isChecked()):
             dirr_w16 = directory + "/cap_16.tif"
             io.imsave(dirr_w16, cap_image)
-        if (self.ui.checkBox_capture_8bit.isChecked()):
+        if (self.bit8Flag.isChecked()):
             w_image_8 = self.bytescaling(cap_image)
             dirr_w8 = directory + "/cap_8.tif"
             io.imsave(dirr_w8, w_image_8)
@@ -310,7 +375,169 @@ class AppFunctions(QMainWindow):
             self.showNormal()
             self.resize(self.width()+1,self.height()+1)
 
+    def showPreview(self):
+        self.leftMenuButtonChangeIcon(0)
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget_bottom.setCurrentIndex(0)
+        self.ui.stackedWidget_camera.setCurrentIndex(0)
 
+
+    def showVideo(self):
+        self.leftMenuButtonChangeIcon(1)
+        self.ui.stackedWidget.setCurrentIndex(1)
+        self.ui.stackedWidget_bottom.setCurrentIndex(0)
+        self.ui.stackedWidget_camera.setCurrentIndex(0)
+
+
+    def showResults(self):
+        if(self.noAvailableExperiment):
+            self.infoPage = infoPage()
+            self.infoPage.loading_ui.label_info.setText("Please start an experiment.")
+        else:
+            self.leftMenuButtonChangeIcon(2)
+            self.ui.stackedWidget.setCurrentIndex(2)
+            self.ui.stackedWidget_bottom.setCurrentIndex(1)
+            self.ui.stackedWidget_camera.setCurrentIndex(1)
+
+    def leftMenuButtonChangeIcon(self,index):
+        if(index==0):
+            self.ui.pushButton_preview.setStyleSheet(u"QPushButton{\n"
+                                                     "background-color:rgb(200,200,200);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "border-radius:12px;\n"
+                                                     "background-image:url(:/icons/icons/preview_n.png);\n"
+                                                     "}\n"
+                                                     "QPushButton::hover{\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "}\n"
+                                                     )
+
+            self.ui.pushButton_video.setStyleSheet(u"QPushButton{\n"
+                                                     "background-color:rgb(100,100,100);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "border-radius:12px;\n"
+                                                     "background-image:url(:/icons/icons/video.png);\n"
+                                                     "}\n"
+                                                     "QPushButton::hover{\n"
+                                                     "background-color:rgb(200,200,200);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "}\n"
+                                                     )
+            self.ui.pushButton_results.setStyleSheet(u"QPushButton{\n"
+                                                   "background-color:rgb(100,100,100);\n"
+                                                   "border: none;\n"
+                                                   "background-position:center;\n"
+                                                   "background-repeat:no-repeat;\n"
+                                                   "border-radius:12px;\n"
+                                                   "background-image:url(:/icons/icons/results.png);\n"
+                                                   "}\n"
+                                                   "QPushButton::hover{\n"
+                                                   "background-color:rgb(200,200,200);\n"
+                                                   "border: none;\n"
+                                                   "background-position:center;\n"
+                                                   "background-repeat:no-repeat;\n"
+                                                   "}\n"
+                                                   )
+        if(index==1):
+            self.ui.pushButton_preview.setStyleSheet(u"QPushButton{\n"
+                                                     "background-color:rgb(100,100,100);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "border-radius:12px;\n"
+                                                     "background-image:url(:/icons/icons/preview_n.png);\n"
+                                                     "}\n"
+                                                     "QPushButton::hover{\n"
+                                                     "background-color:rgb(200,200,200);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "}\n"
+                                                     )
+
+            self.ui.pushButton_video.setStyleSheet(u"QPushButton{\n"
+                                                   "background-color:rgb(200,200,200);\n"
+                                                   "border: none;\n"
+                                                   "background-position:center;\n"
+                                                   "background-repeat:no-repeat;\n"
+                                                   "border-radius:12px;\n"
+                                                   "background-image:url(:/icons/icons/video.png);\n"
+                                                   "}\n"
+                                                   "QPushButton::hover{\n"
+                                                   "border: none;\n"
+                                                   "background-position:center;\n"
+                                                   "background-repeat:no-repeat;\n"
+                                                   "}\n"
+                                                   )
+            self.ui.pushButton_results.setStyleSheet(u"QPushButton{\n"
+                                                     "background-color:rgb(100,100,100);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "border-radius:12px;\n"
+                                                     "background-image:url(:/icons/icons/results.png);\n"
+                                                     "}\n"
+                                                     "QPushButton::hover{\n"
+                                                     "background-color:rgb(200,200,200);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "}\n"
+                                                     )
+        if (index == 2):
+            self.ui.pushButton_preview.setStyleSheet(u"QPushButton{\n"
+                                                     "background-color:rgb(100,100,100);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "border-radius:12px;\n"
+                                                     "background-image:url(:/icons/icons/preview_n.png);\n"
+                                                     "}\n"
+                                                     "QPushButton::hover{\n"
+                                                     "background-color:rgb(200,200,200);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "}\n"
+                                                     )
+
+            self.ui.pushButton_video.setStyleSheet(u"QPushButton{\n"
+                                                   "background-color:rgb(100,100,100);\n"
+                                                   "border: none;\n"
+                                                   "background-position:center;\n"
+                                                   "background-repeat:no-repeat;\n"
+                                                   "border-radius:12px;\n"
+                                                   "background-image:url(:/icons/icons/video.png);\n"
+                                                   "}\n"
+                                                   "QPushButton::hover{\n"
+                                                   "background-color:rgb(200,200,200);\n"
+                                                   "border: none;\n"
+                                                   "background-position:center;\n"
+                                                   "background-repeat:no-repeat;\n"
+                                                   "}\n"
+                                                   )
+            self.ui.pushButton_results.setStyleSheet(u"QPushButton{\n"
+                                                     "background-color:rgb(200,200,200);\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "border-radius:12px;\n"
+                                                     "background-image:url(:/icons/icons/results.png);\n"
+                                                     "}\n"
+                                                     "QPushButton::hover{\n"
+                                                     "border: none;\n"
+                                                     "background-position:center;\n"
+                                                     "background-repeat:no-repeat;\n"
+                                                     "}\n"
+                                                     )
 
 
 
