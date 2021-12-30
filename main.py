@@ -57,11 +57,13 @@ class SplashScreen(QMainWindow):
 
         self.show()
 
+
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
 
     def openApp(self):
-        self.main = AppFunctions(self.app)
+        self.main = AppFunctions(self.app,self.splash_ui.comboBox_comPort.currentText(),int(self.splash_ui.comboBox_baudRate.currentText()))
         self.main.show()
         self.close()
 

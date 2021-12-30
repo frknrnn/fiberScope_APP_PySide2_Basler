@@ -3,6 +3,7 @@
 # PROJECT MADE WITH: Qt Designer and PySide2
 # V: 1.0.0
 # ///////////////////////////////////////////////////////////////
+
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
@@ -19,9 +20,12 @@ import cv2
 import serial
 import time
 import sys
+from scipy import ndimage, misc
+
 
 class AppFunctions(QMainWindow):
-    def __init__(self,app):
+
+    def __init__(self,app,ledPort_name,baud_rate):
         QMainWindow.__init__(self)
         self.app = app
         self.ui = Ui_MainWindow()
@@ -45,6 +49,7 @@ class AppFunctions(QMainWindow):
 
         self.ui.radioButton_8bit.toggled.connect(self.show_8_16_bit_Preview)
         self.ui.radioButton_16bit.toggled.connect(self.show_8_16_bit_Preview)
+
         self.ui.checkBox.stateChanged.connect(self.lut_state_changed)
 
         self.ui.pushButton_quickExposure.clicked.connect(self.quickSetExposure)
@@ -55,15 +60,24 @@ class AppFunctions(QMainWindow):
 
         self.ui.pushButton_experimentStart.clicked.connect(self.startExperiment)
         self.ui.pushButton_cap.clicked.connect(self.quickTakeCap)
-
         self.ui.pushButton_finishProgress.clicked.connect(self.showResult_data)
 
+        self.ui.pushButton_saveData.clicked.connect(self.saveDataControl)
+        self.ui.pushButton_cancelSaving.clicked.connect(self.cancelSavingStatus)
         self.createCustomWidgets()
         self.startCam(1280, 960, 0)
         self.ui.radioButton_8bit.toggle()
         self.bitMode = "8 bit"
 
         self.windowStatus = 0
+
+        try:
+            self.serial_led = serial.Serial(ledPort_name, baudrate=baud_rate, writeTimeout=0)
+            if not self.serial_led.isOpen():
+                self.serial_led.open()
+        except:
+            self.infoPage = infoPage()
+            self.infoPage.loading_ui.label_info.setText("Led Connection Error!")
 
         self.cam.setExposure(0.001)
 
@@ -79,6 +93,49 @@ class AppFunctions(QMainWindow):
 
         self.ui.frame_tabBar.mouseMoveEvent=moveWindow
 
+    def saveDataControl(self):
+        self.cancelSaveStatus=False
+        self.resultSavingFolderPath = QFileDialog.getExistingDirectory(self, 'Select folder')
+        self.directory = self.resultSavingFolderPath + "/" + self.projectName
+        if not os.path.exists(self.directory):
+            os.makedirs(self.directory)
+        with open(self.directory+"/"+'readme.txt', 'w') as f:
+            f.write(self.desciptionText)
+            f.close()
+        self.ui.stackedWidget_results.setCurrentIndex(1)
+        self.ui.progressBar.setValue(0)
+        x = threading.Thread(target=self.saveDatas)
+        x.start()
+
+
+    def saveDatas(self):
+        count = 0
+        step = int(100/self.total_capture_count)
+        self.ui.progressBar.setValue(0)
+        if(self.result8bitFlag.isChecked()):
+            self.directory_8bit = self.directory+"/"+"data_8bit"
+            if not os.path.exists(self.directory_8bit):
+                os.makedirs(self.directory_8bit)
+        if (self.result16bitFlag.isChecked()):
+            self.directory_16bit = self.directory + "/" + "data_16bit"
+            if not os.path.exists(self.directory_16bit):
+                os.makedirs(self.directory_16bit)
+        for i in self.main_data:
+            if(self.cancelSaveStatus):
+                return
+            if (self.result8bitFlag.isChecked()):
+                data8bit = self.bytescaling(i)
+                dirr_8 = self.directory_8bit + f"/{count}_f.tiff"
+                io.imsave(dirr_8, data8bit)
+            if (self.result16bitFlag.isChecked()):
+                dirr_16 = self.directory_16bit + f"/{count}_f.tiff"
+                io.imsave(dirr_16, data8bit)
+                io.imsave(dirr_16, i)
+            count+=1
+            self.ui.progressBar.setValue(count*step)
+        self.ui.stackedWidget_results.setCurrentIndex(0)
+
+
     def showResult_data(self):
         self.cam.real_mode_active()
         self.ui.stackedWidget_mainPage.setCurrentIndex(0)
@@ -88,23 +145,38 @@ class AppFunctions(QMainWindow):
     def changeCancelStatus(self):
         self.cancelStatus = True
 
+    def cancelSavingStatus(self):
+        self.cancelSaveStatus = True
+        self.ui.stackedWidget_results.setCurrentIndex(0)
 
     def startExperiment(self):
         self.cancelStatus = False
-        self.checkParameters()
-        self.ui.stackedWidget_mainPage.setCurrentIndex(1)
-        self.ui.pushButton_finishProgress.setDisabled(True)
-        self.ui.pushButton_finishProgress.hide()
-        self.main_data = []
-        self.loadingSliderTimer = QTimer()
-        self.loadingSliderTimer.timeout.connect(self.updateParameterLoading)
-        x = threading.Thread(target=self.normal_proccess)
-        x.start()
-        self.loadingSliderTimer.start(100)
+        checkFlag=self.checkParameters()
+        if(checkFlag==False):
+            self.infoPage = infoPage()
+            self.infoPage.loading_ui.label_info.setText("Please check the experiment parameters.")
+            return
+        else:
+            self.ui.stackedWidget_mainPage.setCurrentIndex(1)
+            self.ui.pushButton_finishProgress.setDisabled(True)
+            self.ui.pushButton_finishProgress.hide()
+            self.main_data = []
+            self.loadingSliderTimer = QTimer()
+            self.loadingSliderTimer.timeout.connect(self.updateParameterLoading)
+            x = threading.Thread(target=self.normal_proccess)
+            x.start()
+            self.loadingSliderTimer.start(100)
     def checkParameters(self):
         #todo check Parameter Control
+        if(self.ui.lineEdit_projectName.text()==""):
+            return False
+        else:
+            self.projectName = self.ui.lineEdit_projectName.text()
+        self.desciptionText = self.ui.plainTextEdit_description.toPlainText()
+        print(self.desciptionText)
         self.total_capture_count = int(self.ui.lineEdit_captureCount.text())
         self.delay_ms = float(self.ui.lineEdit_delay.text())/1000
+        return True
 
     def updateLoadingImage(self, image):
         image = self.bytescaling(image)
@@ -141,6 +213,7 @@ class AppFunctions(QMainWindow):
             self.ui.pushButton_finishProgress.setDisabled(False)
             self.ui.pushButton_finishProgress.show()
 
+
     def updateParameterLoading(self):
         i = self.captures_count
         total = self.total_capture_count
@@ -149,6 +222,7 @@ class AppFunctions(QMainWindow):
 
 
     def initialSettings(self):
+        self.result_bitMode = "8 bit"
         self.maxCapture = 100
         self.noAvailableExperiment = False
         self.ui.stackedWidget_mainPage.setCurrentIndex(0)
@@ -170,6 +244,27 @@ class AppFunctions(QMainWindow):
     def expoControl(self,value):
         self.expoMaxValue=value
 
+    def show_8_16_bit_Result(self):
+        rdBtn = self.sender()
+        if (rdBtn.isChecked()):
+            if(rdBtn.text()=="8 Bit"):
+                self.result_bitMode = "8 bit"
+            else:
+                self.reuslt_bitMode = "16 bit"
+
+    def lutControl_result(self, minMax):
+        self.ui.label_lowerGrip_result.setText("Lower Grip: {}".format(minMax[0]))
+        self.ui.label_upperGrip_result.setText("Upper Grip: {}".format(minMax[1]))
+        if(self.result_bitMode=="8 bit"):
+            rate = int(round((minMax[1] / 255) * 100))
+            self.resultLutProgress.set_value(rate)
+        else:
+            rate = int(round((minMax[1] / 65536) * 100))
+            self.resultLutProgress.set_value(rate)
+
+
+
+
     def show_8_16_bit_Preview(self):
         rdBtn = self.sender()
         if (rdBtn.isChecked()):
@@ -190,6 +285,9 @@ class AppFunctions(QMainWindow):
             rate = int(round((minMax[1] / 65536) * 100))
             self.lutProgress.set_value(rate)
 
+
+    def saveResultData(self):
+        pass
 
     ##### Preview Show
     def update_image(self,cv_img):
@@ -230,11 +328,14 @@ class AppFunctions(QMainWindow):
         p = convert_to_Qt_format.scaled(3840, 2160, Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)  #QPixmap.fromImage(p) or  #p
 
+
+
     def lut_state_changed(self):
         if (self.ui.checkBox.isChecked()):
             self.cam.autoLut(True)
         else:
             self.cam.autoLut(False)
+
 
 
     def center(self):
@@ -331,11 +432,16 @@ class AppFunctions(QMainWindow):
         self.loadingProgress.setParent(self.ui.frame_progress)
         self.loadingProgress.show()
 
+
+
     def changeCaptureSliderIndex(self):
         self.currentCaptureIndex = self.slider_captures.value()
         self.ui.label_resultCaptureIndex.setText(str(self.currentCaptureIndex))
         self.ui.pictureBox_result.clearImage()
         self.load_image_result(self.main_data[self.currentCaptureIndex])
+
+
+
 
 
     def load_image_result(self,cv_img):
@@ -378,6 +484,8 @@ class AppFunctions(QMainWindow):
 
     def blueLed(self, value):
         self.blueProgress.set_value(value)
+        target = "{0}\n".format(value * 30)
+        self.serial_led.write(target.encode())
 
 
 

@@ -2077,7 +2077,7 @@ border-bottom-left-radius: 115px;</string>
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="page">
                        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -3038,7 +3038,7 @@ font: 87 9pt &quot;Segoe UI Black&quot;;</string>
                             <enum>Qt::Horizontal</enum>
                            </property>
                           </widget>
-                          <widget class="QWidget" name="">
+                          <widget class="QWidget" name="layoutWidget">
                            <property name="geometry">
                             <rect>
                              <x>10</x>
@@ -3101,7 +3101,7 @@ border-radius:3px;
                             </item>
                            </layout>
                           </widget>
-                          <widget class="QWidget" name="">
+                          <widget class="QWidget" name="layoutWidget">
                            <property name="geometry">
                             <rect>
                              <x>10</x>
@@ -3197,7 +3197,7 @@ border-bottom-left-radius: 115px;</string>
                            <property name="geometry">
                             <rect>
                              <x>20</x>
-                             <y>0</y>
+                             <y>10</y>
                              <width>181</width>
                              <height>31</height>
                             </rect>
@@ -3217,7 +3217,7 @@ color: rgb(255, 255, 255);</string>
                            <property name="geometry">
                             <rect>
                              <x>10</x>
-                             <y>30</y>
+                             <y>40</y>
                              <width>200</width>
                              <height>3</height>
                             </rect>
@@ -3236,7 +3236,7 @@ color: rgb(255, 255, 255);</string>
                            <property name="geometry">
                             <rect>
                              <x>10</x>
-                             <y>60</y>
+                             <y>70</y>
                              <width>200</width>
                              <height>300</height>
                             </rect>
@@ -3274,11 +3274,11 @@ font: 87 9pt &quot;Segoe UI Black&quot;;</string>
                               <string>Data  : </string>
                              </property>
                             </widget>
-                            <widget class="QPushButton" name="pushButton_cap_2">
+                            <widget class="QPushButton" name="pushButton_saveData">
                              <property name="geometry">
                               <rect>
                                <x>60</x>
-                               <y>210</y>
+                               <y>140</y>
                                <width>80</width>
                                <height>30</height>
                               </rect>
@@ -3320,81 +3320,6 @@ background-position: center;
                               <string>Save</string>
                              </property>
                             </widget>
-                            <widget class="QLabel" name="label_10">
-                             <property name="geometry">
-                              <rect>
-                               <x>10</x>
-                               <y>130</y>
-                               <width>111</width>
-                               <height>20</height>
-                              </rect>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">color: rgb(200, 200, 200);
-font: 87 9pt &quot;Segoe UI Black&quot;;</string>
-                             </property>
-                             <property name="text">
-                              <string>Resolution  : </string>
-                             </property>
-                            </widget>
-                            <widget class="QComboBox" name="comboBox_saveDataResolution">
-                             <property name="geometry">
-                              <rect>
-                               <x>30</x>
-                               <y>160</y>
-                               <width>150</width>
-                               <height>25</height>
-                              </rect>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>150</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>150</width>
-                               <height>25</height>
-                              </size>
-                             </property>
-                             <property name="layoutDirection">
-                              <enum>Qt::LeftToRight</enum>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">QComboBox{
-color: rgb(200, 200, 200);
-font: 87 9pt &quot;Segoe UI Black&quot;;
-border-radius:2px;
-border-none;
-background-color: transparent;
-}
-QComboBox QAbstractItemView{border: 0px;color:white}</string>
-                             </property>
-                             <property name="currentText">
-                              <string>3840 x 2160</string>
-                             </property>
-                             <item>
-                              <property name="text">
-                               <string>3840 x 2160</string>
-                              </property>
-                             </item>
-                             <item>
-                              <property name="text">
-                               <string>2560 x 1440</string>
-                              </property>
-                             </item>
-                             <item>
-                              <property name="text">
-                               <string>1920 x 1080</string>
-                              </property>
-                             </item>
-                             <item>
-                              <property name="text">
-                               <string>1280 x 720</string>
-                              </property>
-                             </item>
-                            </widget>
                             <widget class="Line" name="line_7">
                              <property name="geometry">
                               <rect>
@@ -3414,26 +3339,7 @@ QComboBox QAbstractItemView{border: 0px;color:white}</string>
                               <enum>Qt::Horizontal</enum>
                              </property>
                             </widget>
-                            <widget class="Line" name="line_8">
-                             <property name="geometry">
-                              <rect>
-                               <x>10</x>
-                               <y>150</y>
-                               <width>150</width>
-                               <height>1</height>
-                              </rect>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: rgb(100, 100, 100);</string>
-                             </property>
-                             <property name="lineWidth">
-                              <number>2</number>
-                             </property>
-                             <property name="orientation">
-                              <enum>Qt::Horizontal</enum>
-                             </property>
-                            </widget>
-                            <widget class="QWidget" name="">
+                            <widget class="QWidget" name="layoutWidget">
                              <property name="geometry">
                               <rect>
                                <x>20</x>

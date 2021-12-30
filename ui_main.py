@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainSuNOHT.ui'
+## Form generated from reading UI file 'mainfqPpUQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -195,7 +195,6 @@ class Ui_MainWindow(object):
         self.line.setStyleSheet(u"background-color: rgb(100, 100, 100);")
         self.line.setFrameShape(QFrame.HLine)
         self.line.setFrameShadow(QFrame.Sunken)
-
         self.verticalLayout.addWidget(self.line)
 
         self.stackedWidget_mainPage = QStackedWidget(self.frame_main)
@@ -1577,13 +1576,13 @@ class Ui_MainWindow(object):
         self.line_10.setLineWidth(2)
         self.line_10.setFrameShape(QFrame.HLine)
         self.line_10.setFrameShadow(QFrame.Sunken)
-        self.widget = QWidget(self.frame_10)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 310, 201, 32))
-        self.gridLayout_2 = QGridLayout(self.widget)
+        self.layoutWidget1 = QWidget(self.frame_10)
+        self.layoutWidget1.setObjectName(u"layoutWidget1")
+        self.layoutWidget1.setGeometry(QRect(10, 310, 201, 32))
+        self.gridLayout_2 = QGridLayout(self.layoutWidget1)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.label_7 = QLabel(self.widget)
+        self.label_7 = QLabel(self.layoutWidget1)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setStyleSheet(u"color: rgb(200, 200, 200);\n"
 "font: 87 9pt \"Segoe UI Black\";")
@@ -1591,7 +1590,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_7, 0, 0, 1, 1)
 
-        self.lineEdit_captureCount = QLineEdit(self.widget)
+        self.lineEdit_captureCount = QLineEdit(self.layoutWidget1)
         self.lineEdit_captureCount.setObjectName(u"lineEdit_captureCount")
         self.lineEdit_captureCount.setMinimumSize(QSize(60, 30))
         self.lineEdit_captureCount.setMaximumSize(QSize(60, 30))
@@ -1610,13 +1609,13 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.lineEdit_captureCount, 0, 1, 1, 1)
 
-        self.widget1 = QWidget(self.frame_10)
-        self.widget1.setObjectName(u"widget1")
-        self.widget1.setGeometry(QRect(10, 130, 201, 121))
-        self.gridLayout_4 = QGridLayout(self.widget1)
+        self.layoutWidget2 = QWidget(self.frame_10)
+        self.layoutWidget2.setObjectName(u"layoutWidget2")
+        self.layoutWidget2.setGeometry(QRect(10, 130, 201, 121))
+        self.gridLayout_4 = QGridLayout(self.layoutWidget2)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.label_14 = QLabel(self.widget1)
+        self.label_14 = QLabel(self.layoutWidget2)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setStyleSheet(u"color: rgb(200, 200, 200);\n"
 "font: 87 9pt \"Segoe UI Black\";")
@@ -1624,7 +1623,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.label_14, 0, 0, 1, 1)
 
-        self.plainTextEdit_description = QPlainTextEdit(self.widget1)
+        self.plainTextEdit_description = QPlainTextEdit(self.layoutWidget2)
         self.plainTextEdit_description.setObjectName(u"plainTextEdit_description")
         self.plainTextEdit_description.setMinimumSize(QSize(100, 100))
         self.plainTextEdit_description.setMaximumSize(QSize(100, 100))
@@ -1660,20 +1659,20 @@ class Ui_MainWindow(object):
         self.frame_9.setFrameShadow(QFrame.Raised)
         self.label_8 = QLabel(self.frame_9)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(20, 0, 181, 31))
+        self.label_8.setGeometry(QRect(20, 10, 181, 31))
         self.label_8.setStyleSheet(u"font: 87 12pt \"Segoe UI Black\";\n"
 "color: rgb(255, 255, 255);")
         self.label_8.setAlignment(Qt.AlignCenter)
         self.line_5 = QFrame(self.frame_9)
         self.line_5.setObjectName(u"line_5")
-        self.line_5.setGeometry(QRect(10, 30, 200, 3))
+        self.line_5.setGeometry(QRect(10, 40, 200, 3))
         self.line_5.setStyleSheet(u"background-color: rgb(100, 100, 100);")
         self.line_5.setLineWidth(2)
         self.line_5.setFrameShape(QFrame.HLine)
         self.line_5.setFrameShadow(QFrame.Sunken)
         self.stackedWidget_results = QStackedWidget(self.frame_9)
         self.stackedWidget_results.setObjectName(u"stackedWidget_results")
-        self.stackedWidget_results.setGeometry(QRect(10, 60, 200, 300))
+        self.stackedWidget_results.setGeometry(QRect(10, 70, 200, 300))
         self.stackedWidget_results.setMinimumSize(QSize(200, 300))
         self.stackedWidget_results.setMaximumSize(QSize(16777215, 300))
         self.page_8 = QWidget()
@@ -1683,13 +1682,13 @@ class Ui_MainWindow(object):
         self.label_9.setGeometry(QRect(10, 10, 111, 20))
         self.label_9.setStyleSheet(u"color: rgb(200, 200, 200);\n"
 "font: 87 9pt \"Segoe UI Black\";")
-        self.pushButton_cap_2 = QPushButton(self.page_8)
-        self.pushButton_cap_2.setObjectName(u"pushButton_cap_2")
-        self.pushButton_cap_2.setGeometry(QRect(60, 210, 80, 30))
-        self.pushButton_cap_2.setMinimumSize(QSize(80, 30))
-        self.pushButton_cap_2.setMaximumSize(QSize(80, 30))
-        self.pushButton_cap_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_cap_2.setStyleSheet(u"QPushButton{\n"
+        self.pushButton_saveData = QPushButton(self.page_8)
+        self.pushButton_saveData.setObjectName(u"pushButton_saveData")
+        self.pushButton_saveData.setGeometry(QRect(60, 140, 80, 30))
+        self.pushButton_saveData.setMinimumSize(QSize(80, 30))
+        self.pushButton_saveData.setMaximumSize(QSize(80, 30))
+        self.pushButton_saveData.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_saveData.setStyleSheet(u"QPushButton{\n"
 "font: 63 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgba(150, 150, 150,100);\n"
@@ -1705,29 +1704,6 @@ class Ui_MainWindow(object):
 "background-repeat: no-repeat;\n"
 "background-position: center;\n"
 "}")
-        self.label_10 = QLabel(self.page_8)
-        self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(10, 130, 111, 20))
-        self.label_10.setStyleSheet(u"color: rgb(200, 200, 200);\n"
-"font: 87 9pt \"Segoe UI Black\";")
-        self.comboBox_saveDataResolution = QComboBox(self.page_8)
-        self.comboBox_saveDataResolution.addItem("")
-        self.comboBox_saveDataResolution.addItem("")
-        self.comboBox_saveDataResolution.addItem("")
-        self.comboBox_saveDataResolution.addItem("")
-        self.comboBox_saveDataResolution.setObjectName(u"comboBox_saveDataResolution")
-        self.comboBox_saveDataResolution.setGeometry(QRect(30, 160, 150, 25))
-        self.comboBox_saveDataResolution.setMinimumSize(QSize(150, 25))
-        self.comboBox_saveDataResolution.setMaximumSize(QSize(150, 25))
-        self.comboBox_saveDataResolution.setLayoutDirection(Qt.LeftToRight)
-        self.comboBox_saveDataResolution.setStyleSheet(u"QComboBox{\n"
-"color: rgb(200, 200, 200);\n"
-"font: 87 9pt \"Segoe UI Black\";\n"
-"border-radius:2px;\n"
-"border-none;\n"
-"background-color: transparent;\n"
-"}\n"
-"QComboBox QAbstractItemView{border: 0px;color:white}")
         self.line_7 = QFrame(self.page_8)
         self.line_7.setObjectName(u"line_7")
         self.line_7.setGeometry(QRect(10, 30, 150, 1))
@@ -1735,20 +1711,13 @@ class Ui_MainWindow(object):
         self.line_7.setLineWidth(2)
         self.line_7.setFrameShape(QFrame.HLine)
         self.line_7.setFrameShadow(QFrame.Sunken)
-        self.line_8 = QFrame(self.page_8)
-        self.line_8.setObjectName(u"line_8")
-        self.line_8.setGeometry(QRect(10, 150, 150, 1))
-        self.line_8.setStyleSheet(u"background-color: rgb(100, 100, 100);")
-        self.line_8.setLineWidth(2)
-        self.line_8.setFrameShape(QFrame.HLine)
-        self.line_8.setFrameShadow(QFrame.Sunken)
-        self.widget2 = QWidget(self.page_8)
-        self.widget2.setObjectName(u"widget2")
-        self.widget2.setGeometry(QRect(20, 40, 151, 71))
-        self.gridLayout = QGridLayout(self.widget2)
+        self.layoutWidget3 = QWidget(self.page_8)
+        self.layoutWidget3.setObjectName(u"layoutWidget3")
+        self.layoutWidget3.setGeometry(QRect(20, 40, 151, 71))
+        self.gridLayout = QGridLayout(self.layoutWidget3)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_lowerGrip_6 = QLabel(self.widget2)
+        self.label_lowerGrip_6 = QLabel(self.layoutWidget3)
         self.label_lowerGrip_6.setObjectName(u"label_lowerGrip_6")
         self.label_lowerGrip_6.setStyleSheet(u"QLabel{\n"
 "color: rgb(200, 200, 200);\n"
@@ -1758,7 +1727,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_lowerGrip_6, 0, 0, 1, 1)
 
-        self.frame_result8bit = QFrame(self.widget2)
+        self.frame_result8bit = QFrame(self.layoutWidget3)
         self.frame_result8bit.setObjectName(u"frame_result8bit")
         self.frame_result8bit.setMinimumSize(QSize(60, 30))
         self.frame_result8bit.setMaximumSize(QSize(60, 30))
@@ -1769,7 +1738,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.frame_result8bit, 0, 1, 1, 1)
 
-        self.label_lowerGrip_7 = QLabel(self.widget2)
+        self.label_lowerGrip_7 = QLabel(self.layoutWidget3)
         self.label_lowerGrip_7.setObjectName(u"label_lowerGrip_7")
         self.label_lowerGrip_7.setStyleSheet(u"QLabel{\n"
 "color: rgb(200, 200, 200);\n"
@@ -1779,7 +1748,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_lowerGrip_7, 1, 0, 1, 1)
 
-        self.frame_results16bit = QFrame(self.widget2)
+        self.frame_results16bit = QFrame(self.layoutWidget3)
         self.frame_results16bit.setObjectName(u"frame_results16bit")
         self.frame_results16bit.setMinimumSize(QSize(60, 30))
         self.frame_results16bit.setMaximumSize(QSize(60, 30))
@@ -2008,7 +1977,7 @@ class Ui_MainWindow(object):
         self.pushButton_preview.setDefault(False)
         self.pushButton_video.setDefault(False)
         self.pushButton_results.setDefault(False)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_results.setCurrentIndex(0)
 
 
@@ -2078,14 +2047,7 @@ class Ui_MainWindow(object):
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Description :", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Data Save", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Data  : ", None))
-        self.pushButton_cap_2.setText(QCoreApplication.translate("MainWindow", u"Save", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Resolution  : ", None))
-        self.comboBox_saveDataResolution.setItemText(0, QCoreApplication.translate("MainWindow", u"3840 x 2160", None))
-        self.comboBox_saveDataResolution.setItemText(1, QCoreApplication.translate("MainWindow", u"2560 x 1440", None))
-        self.comboBox_saveDataResolution.setItemText(2, QCoreApplication.translate("MainWindow", u"1920 x 1080", None))
-        self.comboBox_saveDataResolution.setItemText(3, QCoreApplication.translate("MainWindow", u"1280 x 720", None))
-
-        self.comboBox_saveDataResolution.setCurrentText(QCoreApplication.translate("MainWindow", u"3840 x 2160", None))
+        self.pushButton_saveData.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.label_lowerGrip_6.setText(QCoreApplication.translate("MainWindow", u"8 Bit :", None))
         self.label_lowerGrip_7.setText(QCoreApplication.translate("MainWindow", u"16 bit : ", None))
         self.label_87.setText(QCoreApplication.translate("MainWindow", u"Data Saving :", None))
