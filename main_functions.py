@@ -102,15 +102,20 @@ class AppFunctions(QMainWindow):
         with open(self.directory+"/"+'readme.txt', 'w') as f:
             f.write(self.desciptionText)
             f.close()
+        self.dataSavingProgressValue = 0
         self.ui.stackedWidget_results.setCurrentIndex(1)
         self.ui.progressBar.setValue(0)
         x = threading.Thread(target=self.saveDatas)
         x.start()
+        self.savingProgressTimer = QTimer()
+        self.savingProgressTimer.timeout.connect(self.setSavingProgressValue)
+        self.savingProgressTimer.start(200)
+
 
 
     def saveDatas(self):
         count = 0
-        step = int(100/self.total_capture_count)
+        step = float(100/self.total_capture_count)
         self.ui.progressBar.setValue(0)
         if(self.result8bitFlag.isChecked()):
             self.directory_8bit = self.directory+"/"+"data_8bit"
@@ -129,18 +134,24 @@ class AppFunctions(QMainWindow):
                 io.imsave(dirr_8, data8bit)
             if (self.result16bitFlag.isChecked()):
                 dirr_16 = self.directory_16bit + f"/{count}_f.tiff"
-                io.imsave(dirr_16, data8bit)
                 io.imsave(dirr_16, i)
             count+=1
-            self.ui.progressBar.setValue(count*step)
+            self.dataSavingProgressValue = int(count*step)
         self.ui.stackedWidget_results.setCurrentIndex(0)
 
+        self.savingProgressTimer.stop()
+
+    def setSavingProgressValue(self):
+        self.ui.progressBar.setValue(self.dataSavingProgressValue)
 
     def showResult_data(self):
+        self.noAvailableExperiment = False
+        self.main_data = self.tempData
         self.cam.real_mode_active()
         self.ui.stackedWidget_mainPage.setCurrentIndex(0)
         self.showResults()
         self.load_image_result(self.main_data[0])
+        self.slider_captures.setMaximum(self.total_capture_count-1)
 
     def changeCancelStatus(self):
         self.cancelStatus = True
@@ -148,8 +159,10 @@ class AppFunctions(QMainWindow):
     def cancelSavingStatus(self):
         self.cancelSaveStatus = True
         self.ui.stackedWidget_results.setCurrentIndex(0)
+        self.savingProgressTimer.stop()
 
     def startExperiment(self):
+
         self.cancelStatus = False
         checkFlag=self.checkParameters()
         if(checkFlag==False):
@@ -160,7 +173,8 @@ class AppFunctions(QMainWindow):
             self.ui.stackedWidget_mainPage.setCurrentIndex(1)
             self.ui.pushButton_finishProgress.setDisabled(True)
             self.ui.pushButton_finishProgress.hide()
-            self.main_data = []
+
+            self.tempData = []
             self.loadingSliderTimer = QTimer()
             self.loadingSliderTimer.timeout.connect(self.updateParameterLoading)
             x = threading.Thread(target=self.normal_proccess)
@@ -199,7 +213,7 @@ class AppFunctions(QMainWindow):
             if(self.cancelStatus):
                 break
             image = self.cam.takeCap()
-            self.main_data.append(image)
+            self.tempData.append(image)
             self.updateLoadingImage(image)
             self.captures_count+=1
             time.sleep(self.delay_ms)
@@ -222,15 +236,15 @@ class AppFunctions(QMainWindow):
 
 
     def initialSettings(self):
+        self.main_data = []
         self.result_bitMode = "8 bit"
         self.maxCapture = 100
-        self.noAvailableExperiment = False
+        self.noAvailableExperiment = True
         self.ui.stackedWidget_mainPage.setCurrentIndex(0)
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.stackedWidget_bottom.setCurrentIndex(0)
         self.ui.stackedWidget_results.setCurrentIndex(0)
         self.ui.stackedWidget_camera.setCurrentIndex(0)
-
 
     def startCam(self,width, heıght,camId):
         self.cam = basler_cam()
